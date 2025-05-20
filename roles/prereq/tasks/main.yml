@@ -1,4 +1,19 @@
 ---
+- name: Apt update and upgrade
+  become: true
+  ansible.builtin.apt:
+    upgrade: true
+    update_cache: true
+    cache_valid_time: 86400
+  when: ansible_os_family == "Debian"
+
+- name: Install qemu-guest-agent
+  become: true
+  ansible.builtin.package:
+    name: qemu-guest-agent
+    state: present
+  when: ansible_os_family == "Debian"
+
 - name: Set same timezone on every Server
   community.general.timezone:
     name: "{{ system_timezone }}"

@@ -2,3 +2,7 @@
 *.log
 ansible.cfg
 kubeconfig
+
+creds
+terraform.tfvars
+**/**/terraform.tfstate
